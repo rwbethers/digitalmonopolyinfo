@@ -3,35 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Monopoly — Own Your Market. Dominate Your City.</title>
-  <meta name="description" content="Digital Monopoly builds ranked websites and Facebook pages for blue collar trades. You get exclusive inbound leads. We own the asset. You own your market." />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Digital Monopoly — Monopolize Your Market. Multiply Your Revenue.</title>
+  <meta name="description" content="Digital Monopoly builds ranked websites and Facebook pages that generate exclusive inbound leads for blue collar trades. One partner per city. No shared leads." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      --black:  #0a0a0a;
+      --dark:   #111111;
+      --card:   #161616;
+      --border: #222222;
       --green:  #1a7a4a;
-      --green2: #23a062;
-      --gold:   #e8b84b;
+      --green2: #22a060;
+      --gold:   #d4a832;
+      --gold2:  #f0c84a;
       --red:    #c0392b;
-      --navy:   #0d1117;
-      --card:   #131920;
-      --border: #1e2d1f;
-      --text:   #e8ede9;
-      --muted:  #8a9e8c;
+      --white:  #f0ede6;
+      --muted:  #888880;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--navy);
-      color: var(--text);
+      background: var(--black);
+      color: var(--white);
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* ─── NAVBAR ─────────────────────────────────────────── */
+    /* ── NAVBAR ───────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -39,203 +41,284 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 2rem;
-      background: rgba(13,17,23,0.95);
+      padding: 1.1rem 4rem;
+      background: rgba(10,10,10,0.97);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
     }
 
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: var(--gold);
-      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
     }
 
-    .nav-logo span { color: var(--green2); }
-
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-left: 2rem;
-      transition: color 0.2s;
-    }
-
-    nav a:hover { color: var(--gold); }
-
-    .nav-cta {
-      background: var(--green) !important;
-      color: white !important;
-      padding: 0.5rem 1.2rem;
-      border-radius: 6px;
-      font-weight: 600 !important;
-    }
-
-    .nav-cta:hover { background: var(--green2) !important; }
-
-    /* ─── HERO ───────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--gold);
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      position: relative;
+      font-size: 1.4rem;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text span {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--black) !important;
+      padding: 0.55rem 1.4rem !important;
+      border-radius: 6px !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      letter-spacing: 0.3px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold2) !important; }
+
+    /* ── HERO ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 80px;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,122,74,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(232,184,75,0.08) 0%, transparent 60%);
-      pointer-events: none;
+    .hero-left {
+      padding: 4rem 3rem 4rem 6rem;
     }
 
-    .board-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.3;
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: rgba(26,122,74,0.2);
-      border: 1px solid var(--green);
-      color: var(--green2);
-      font-size: 0.78rem;
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(212,168,50,0.1);
+      border: 1px solid rgba(212,168,50,0.3);
+      color: var(--gold);
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 0.4rem 1.2rem;
+      padding: 0.4rem 1rem;
       border-radius: 100px;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-size: clamp(2.6rem, 4.5vw, 4rem);
       font-weight: 900;
-      line-height: 1.05;
+      line-height: 1.08;
       margin-bottom: 1.5rem;
-      max-width: 900px;
+      color: var(--white);
     }
 
-    .hero h1 .highlight {
+    .hero h1 em {
+      font-style: normal;
       color: var(--gold);
-      position: relative;
     }
 
-    .hero h1 .highlight::after {
-      content: '';
-      position: absolute;
-      bottom: 4px;
-      left: 0; right: 0;
-      height: 4px;
-      background: var(--gold);
-      border-radius: 2px;
-      opacity: 0.4;
-    }
-
-    .hero-sub {
-      font-size: 1.2rem;
+    .hero-desc {
+      font-size: 1.05rem;
       color: var(--muted);
-      max-width: 580px;
-      margin: 0 auto 2.5rem;
-      line-height: 1.7;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
     }
 
-    .hero-buttons {
+    .hero-btns {
       display: flex;
       gap: 1rem;
-      justify-content: center;
       flex-wrap: wrap;
+      margin-bottom: 3.5rem;
     }
 
-    .btn-primary {
-      background: var(--green);
-      color: white;
-      padding: 0.9rem 2.2rem;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1rem;
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black);
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.95rem;
       text-decoration: none;
-      border: none;
-      cursor: pointer;
+      letter-spacing: 0.3px;
       transition: all 0.2s;
       display: inline-block;
     }
 
-    .btn-primary:hover {
-      background: var(--green2);
+    .btn-gold:hover {
+      background: var(--gold2);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(26,122,74,0.35);
+      box-shadow: 0 8px 24px rgba(212,168,50,0.3);
     }
 
-    .btn-secondary {
+    .btn-outline {
       background: transparent;
-      color: var(--gold);
-      padding: 0.9rem 2.2rem;
-      border-radius: 8px;
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
       text-decoration: none;
-      border: 1px solid var(--gold);
+      border: 1px solid var(--border);
       transition: all 0.2s;
       display: inline-block;
     }
 
-    .btn-secondary:hover {
-      background: rgba(232,184,75,0.1);
-      transform: translateY(-2px);
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
-    .hero-stats {
+    .hero-mini-stats {
       display: flex;
-      gap: 3rem;
-      justify-content: center;
-      margin-top: 4rem;
-      flex-wrap: wrap;
+      gap: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
     }
 
-    .stat { text-align: center; }
-
-    .stat-number {
+    .mini-stat-num {
       font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
+      font-size: 1.8rem;
       font-weight: 900;
       color: var(--gold);
       display: block;
+      line-height: 1;
     }
 
-    .stat-label {
-      font-size: 0.85rem;
+    .mini-stat-label {
+      font-size: 0.78rem;
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 1px;
+      margin-top: 0.3rem;
     }
 
-    /* ─── SECTION BASE ───────────────────────────────────── */
-    section {
-      padding: 5rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
+    .hero-right {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.85) contrast(1.1);
+    }
+
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--black) 0%, transparent 30%),
+                  linear-gradient(to top, var(--black) 0%, transparent 20%);
+    }
+
+    /* ── STATS BAR ────────────────────────────────────────── */
+    .stats-bar {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 6rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item {}
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-top: 0.5rem;
+    }
+
+    /* ── ABOUT ────────────────────────────────────────────── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: center;
+      min-height: 600px;
+    }
+
+    .about-img {
+      height: 600px;
+      overflow: hidden;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) saturate(0.9);
+    }
+
+    .about-content {
+      padding: 5rem 6rem 5rem 5rem;
+      background: var(--dark);
     }
 
     .section-label {
-      font-size: 0.78rem;
-      font-weight: 700;
+      font-size: 0.72rem;
+      font-weight: 800;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--green2);
@@ -244,403 +327,412 @@
 
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
       font-weight: 900;
       line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-
-    .section-sub {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 560px;
-      line-height: 1.7;
-    }
-
-    /* ─── HOW IT WORKS ───────────────────────────────────── */
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .step {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .step:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-    }
-
-    .step::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--green);
-    }
-
-    .step-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: var(--border);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-
-    .step h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      color: var(--gold);
-    }
-
-    .step p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    /* ─── TIERS ──────────────────────────────────────────── */
-    #tiers { background: rgba(19,25,32,0.6); border-radius: 20px; }
-
-    .tiers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .tier-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
-    }
-
-    .tier-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-    }
-
-    .tier-card.featured {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 1px var(--gold), 0 8px 32px rgba(232,184,75,0.15);
-    }
-
-    .tier-badge {
-      position: absolute;
-      top: 1rem; right: 1rem;
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 0.25rem 0.7rem;
-      border-radius: 100px;
-    }
-
-    .tier-header {
-      padding: 1.8rem 1.8rem 1.2rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .tier-color {
-      width: 100%;
-      height: 8px;
-      border-radius: 4px;
       margin-bottom: 1.2rem;
     }
 
-    .tier-1 .tier-color { background: #8B5CF6; }
-    .tier-2 .tier-color { background: #F97316; }
-    .tier-3 .tier-color { background: #3B82F6; }
-
-    .tier-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 900;
-      margin-bottom: 0.3rem;
-    }
-
-    .tier-price {
-      font-size: 2rem;
-      font-weight: 800;
+    .section-title em {
+      font-style: normal;
       color: var(--gold);
     }
 
-    .tier-price span {
-      font-size: 0.9rem;
+    .about-text {
       color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .check-list {
+      list-style: none;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--white);
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .check-list li:last-child { border-bottom: none; }
+
+    .check-list li::before {
+      content: '✓';
+      width: 22px;
+      height: 22px;
+      background: rgba(26,122,74,0.2);
+      border: 1px solid var(--green2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--green2);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    /* ── HOW IT WORKS ─────────────────────────────────────── */
+    .how {
+      padding: 6rem 6rem;
+      background: var(--black);
+    }
+
+    .how-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      z-index: 0;
+    }
+
+    .step-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      transition: all 0.25s;
+    }
+
+    .step-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      background: var(--gold);
+      color: var(--black);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin: 0 auto 1.2rem;
+    }
+
+    .step-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--white);
+    }
+
+    .step-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    /* ── TIERS ────────────────────────────────────────────── */
+    .tiers {
+      padding: 6rem 6rem;
+      background: var(--dark);
+    }
+
+    .tiers-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .tier {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.25s;
+      position: relative;
+    }
+
+    .tier:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    }
+
+    .tier.featured {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold);
+    }
+
+    .tier-ribbon {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.2rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    .tier-top {
+      height: 6px;
+    }
+
+    .tier-1 .tier-top { background: linear-gradient(90deg, #7c3aed, #a855f7); }
+    .tier-2 .tier-top { background: linear-gradient(90deg, var(--gold), var(--gold2)); }
+    .tier-3 .tier-top { background: linear-gradient(90deg, #1d4ed8, #3b82f6); }
+
+    .tier-head {
+      padding: 1.8rem 2rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tier-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+
+    .tier-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .tier-price sub {
+      font-size: 0.9rem;
       font-weight: 400;
+      color: var(--muted);
+      vertical-align: middle;
     }
 
     .tier-body {
-      padding: 1.5rem 1.8rem 1.8rem;
+      padding: 1.8rem 2rem 2rem;
     }
 
     .tier-features {
       list-style: none;
-      margin-bottom: 1.8rem;
+      margin-bottom: 2rem;
     }
 
     .tier-features li {
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
-      font-size: 0.92rem;
-      color: var(--text);
-      margin-bottom: 0.7rem;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: var(--white);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
       line-height: 1.4;
     }
 
-    .tier-features li::before {
-      content: '✓';
+    .tier-features li:last-child { border-bottom: none; }
+
+    .tier-features li .tick {
       color: var(--green2);
       font-weight: 800;
       flex-shrink: 0;
       margin-top: 1px;
     }
 
-    /* ─── TRADES ─────────────────────────────────────────── */
-    .trades-grid {
+    /* ── TRADES ───────────────────────────────────────────── */
+    .trades {
+      padding: 6rem 6rem;
+      background: var(--black);
+      text-align: center;
+    }
+
+    .trades-header {
+      margin-bottom: 3rem;
+    }
+
+    .trades-wrap {
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      margin-top: 2rem;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
-    .trade-tag {
-      background: rgba(26,122,74,0.12);
-      border: 1px solid rgba(26,122,74,0.3);
+    .trade-chip {
+      background: rgba(26,122,74,0.1);
+      border: 1px solid rgba(26,122,74,0.25);
       color: var(--green2);
-      padding: 0.5rem 1rem;
+      padding: 0.55rem 1.2rem;
       border-radius: 6px;
       font-size: 0.9rem;
       font-weight: 600;
-    }
-
-    /* ─── EXAMPLE SITES ──────────────────────────────────── */
-    .examples-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .example-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
       transition: all 0.2s;
     }
 
-    .example-card:hover {
-      border-color: var(--green);
-      transform: translateY(-3px);
+    .trade-chip:hover {
+      background: rgba(26,122,74,0.2);
+      border-color: var(--green2);
+      transform: translateY(-2px);
     }
 
-    .example-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(26,122,74,0.15);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-
-    .example-card h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.4rem;
-    }
-
-    .example-card p {
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
-
-    .example-rank {
-      display: inline-block;
-      background: rgba(232,184,75,0.15);
-      border: 1px solid rgba(232,184,75,0.3);
-      color: var(--gold);
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 0.25rem 0.6rem;
-      border-radius: 4px;
-      margin-top: 0.8rem;
-    }
-
-    /* ─── OWNERSHIP BOX ──────────────────────────────────── */
-    .ownership-box {
-      background: linear-gradient(135deg, rgba(26,122,74,0.15), rgba(13,17,23,0.8));
-      border: 1px solid var(--green);
-      border-radius: 16px;
-      padding: 3rem;
-      margin-top: 3rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .ownership-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      margin-bottom: 1rem;
-      color: var(--gold);
-    }
-
-    .ownership-box p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.98rem;
-    }
-
-    .ownership-points {
-      list-style: none;
-    }
-
-    .ownership-points li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .ownership-points li .dot {
-      width: 8px;
-      height: 8px;
-      background: var(--gold);
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-
-    /* ─── CTA ────────────────────────────────────────────── */
-    .cta-section {
-      text-align: center;
-      padding: 6rem 2rem;
+    /* ── CTA ──────────────────────────────────────────────── */
+    .cta {
       position: relative;
       overflow: hidden;
+      text-align: center;
+      padding: 7rem 4rem;
     }
 
-    .cta-section::before {
-      content: '';
+    .cta-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(26,122,74,0.15) 0%, transparent 70%);
-      pointer-events: none;
+      background-image: url('https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?w=1400&auto=format&fit=crop&q=60');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.25) saturate(0.5);
     }
 
-    .cta-section h2 {
+    .cta-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 900;
       margin-bottom: 1rem;
+      line-height: 1.1;
     }
 
-    .cta-section p {
+    .cta h2 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .cta p {
       color: var(--muted);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       margin-bottom: 2.5rem;
-      max-width: 500px;
+      max-width: 520px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* ─── FOOTER ─────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
-      text-align: center;
+    .cta-note {
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
       color: var(--muted);
-      font-size: 0.85rem;
     }
 
-    footer .footer-logo {
+    /* ── FOOTER ───────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 900;
       color: var(--gold);
-      margin-bottom: 0.5rem;
     }
 
-    /* ─── DIVIDER ────────────────────────────────────────── */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      margin: 0;
+    .footer-logo span {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
     }
 
-    /* ─── RESPONSIVE ─────────────────────────────────────── */
-    @media (max-width: 768px) {
-      nav a:not(.nav-cta) { display: none; }
-      .ownership-box { grid-template-columns: 1fr; }
-      .hero-stats { gap: 1.5rem; }
+    footer p {
+      color: var(--muted);
+      font-size: 0.82rem;
     }
 
-    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    /* ── RESPONSIVE ───────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      nav { padding: 1rem 2rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 50vh; }
+      .hero-left { padding: 4rem 2rem; }
+      .about { grid-template-columns: 1fr; }
+      .about-img { height: 400px; }
+      .about-content { padding: 3rem 2rem; }
+      .stats-bar { padding: 2.5rem 2rem; grid-template-columns: repeat(2,1fr); }
+      .how { padding: 4rem 2rem; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      .tiers { padding: 4rem 2rem; }
+      .tiers-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+      .trades { padding: 4rem 2rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+
+    /* ── ANIMATIONS ───────────────────────────────────────── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
+      from { opacity: 0; transform: translateY(30px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-content > * {
-      animation: fadeUp 0.6s ease both;
+    .hero-left > * {
+      animation: fadeUp 0.7s ease both;
     }
-
-    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-    .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
-    .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
-    .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
-    .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
-
-    /* Monopoly token decoration */
-    .token {
-      display: inline-block;
-      font-size: 2rem;
-      margin: 0 0.3rem;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .token:nth-child(2) { animation-delay: 0.2s; }
-    .token:nth-child(3) { animation-delay: 0.4s; }
-    .token:nth-child(4) { animation-delay: 0.6s; }
+    .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+    .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
   </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav>
-  <div class="nav-logo">Digital<span>Monopoly</span></div>
-  <div>
-    <a href="#how-it-works">How It Works</a>
+  <div class="nav-logo">
+    <div class="logo-icon">🏛️</div>
+    <div class="logo-text">
+      Digital Monopoly
+      <span>Own Your Market</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#how">How It Works</a>
     <a href="#tiers">Pricing</a>
     <a href="#trades">Trades</a>
     <a href="#contact" class="nav-cta">Book a Call</a>
@@ -648,240 +740,228 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="board-grid"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Exclusive Lead Generation for Blue Collar Trades</div>
-    <h1>Own Your Market.<br><span class="highlight">Dominate Your City.</span></h1>
-    <p class="hero-sub">
-      We build ranked websites and Facebook pages that generate inbound leads 24/7.
-      You get every lead exclusively. No shared leads. No competition. One partner per city.
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Exclusive Lead Generation for Blue Collar Trades</div>
+    <h1>Monopolize Your Market.<br><em>Multiply Your Revenue.</em></h1>
+    <p class="hero-desc">
+      We build ranked websites and Facebook pages that generate inbound leads 24/7 for your trade in your city.
+      One exclusive partner per market. No shared leads. No competition.
     </p>
-    <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">Get Free Leads First</a>
-      <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Get Free Leads First</a>
+      <a href="#how" class="btn-outline">See How It Works</a>
     </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-number">15+</span>
-        <span class="stat-label">Inbound Calls/Month</span>
+    <div class="hero-mini-stats">
+      <div>
+        <span class="mini-stat-num">15+</span>
+        <div class="mini-stat-label">Leads/Month</div>
       </div>
-      <div class="stat">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Exclusive Per City</span>
+      <div>
+        <span class="mini-stat-num">#1</span>
+        <div class="mini-stat-label">Organic Rank</div>
       </div>
-      <div class="stat">
-        <span class="stat-number">#1</span>
-        <span class="stat-label">Organic Ranking</span>
-      </div>
-      <div class="stat">
-        <span class="stat-number">0</span>
-        <span class="stat-label">Shared Leads</span>
+      <div>
+        <span class="mini-stat-num">1</span>
+        <div class="mini-stat-label">Partner Per City</div>
       </div>
     </div>
   </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1611371805429-8b5c1b2c34ba?w=1000&auto=format&fit=crop&q=80" alt="Monopoly board" />
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">15+</span>
+    <div class="stat-label">Inbound Calls Per Month</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <div class="stat-label">Exclusive Per Territory</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">#1</span>
+    <div class="stat-label">Organic Search Ranking</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">0</span>
+    <div class="stat-label">Shared Leads. Ever.</div>
+  </div>
 </div>
 
-<div class="divider"></div>
+<!-- ABOUT -->
+<div class="about" id="about">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1585779034823-7e9ac8faec70?w=800&auto=format&fit=crop&q=80" alt="Monopoly board game" />
+  </div>
+  <div class="about-content">
+    <div class="section-label">The Difference</div>
+    <h2 class="section-title">We Build the Asset.<br>You <em>Own the Market.</em></h2>
+    <p class="about-text">
+      At Digital Monopoly, we build a network of ranked websites, Facebook pages, and map listings
+      for your trade in your city. These assets generate organic inbound leads year-round —
+      even in slow seasons. We own the assets. You get every lead exclusively.
+    </p>
+    <ul class="check-list">
+      <li>Expertise in Organic Lead Generation</li>
+      <li>SEO Domination — Ranked #1 in Your Market</li>
+      <li>Proven Results Across Multiple Cities</li>
+      <li>Year-Round Leads That Eliminate Slow Seasons</li>
+      <li>Free Leads Sent Before You Spend a Dollar</li>
+    </ul>
+  </div>
+</div>
 
 <!-- HOW IT WORKS -->
-<section id="how-it-works">
-  <div class="section-label">The Playbook</div>
-  <h2 class="section-title">How Digital Monopoly Works</h2>
-  <p class="section-sub">We do the work. You take the calls. Simple as that.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-number">01</div>
+<section class="how" id="how">
+  <div class="how-header">
+    <div class="section-label">The Playbook</div>
+    <h2 class="section-title">How Digital Monopoly Works</h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
       <h3>We Build the Asset</h3>
-      <p>We build a ranked website and Facebook page for your trade in your city. We own it. It generates leads around the clock.</p>
+      <p>We build a ranked website and Facebook page for your trade in your city. We own it. It generates leads 24/7.</p>
     </div>
-    <div class="step">
-      <div class="step-number">02</div>
-      <h3>We Prove It Works</h3>
-      <p>Before you pay a dime, we send you real homeowner leads for free. You work the leads. See the quality yourself.</p>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>We Prove It First</h3>
+      <p>Before you pay anything, we send you real homeowner leads for free. You work them and see the quality yourself.</p>
     </div>
-    <div class="step">
-      <div class="step-number">03</div>
-      <h3>You Own Your City</h3>
-      <p>One partner per city. Every lead from that market goes to you exclusively. No other company in your trade gets our leads in your territory.</p>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>You Lock In Your City</h3>
+      <p>One partner per city per trade. Every lead in your market goes exclusively to you. Your competition can't buy in.</p>
     </div>
-    <div class="step">
-      <div class="step-number">04</div>
-      <h3>We Keep Scaling</h3>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h3>We Scale Together</h3>
       <p>As your market grows, so does our system. More content, more ads, more leads. Your pipeline never runs dry.</p>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- OWNERSHIP -->
-<section>
-  <div class="section-label">The Difference</div>
-  <h2 class="section-title">We Build It. You Benefit. Forever.</h2>
-  <div class="ownership-box">
-    <div>
-      <h3>Why We Keep the Asset</h3>
-      <p>Most agencies build you a website and walk away. If you stop paying, you lose everything and start from scratch.<br><br>
-      Digital Monopoly works differently. We own the ranked site, which means we're invested in keeping it #1. The better it ranks, the more it's worth to us — and the more leads it sends to you.</p>
-    </div>
-    <ul class="ownership-points">
-      <li><span class="dot"></span>We maintain the site and rankings long-term</li>
-      <li><span class="dot"></span>You never pay to rebuild from scratch</li>
-      <li><span class="dot"></span>We only win when you get leads</li>
-      <li><span class="dot"></span>Exclusive territory — your competition can't buy in</li>
-      <li><span class="dot"></span>Proven before you spend a dollar</li>
-    </ul>
-  </div>
-</section>
-
-<div class="divider"></div>
-
 <!-- TIERS -->
-<section id="tiers">
-  <div class="section-label">Choose Your Play</div>
-  <h2 class="section-title">Three Ways to Win Your Market</h2>
-  <p class="section-sub">Start with leads. Add automation. Go all in on total market domination.</p>
+<section class="tiers" id="tiers">
+  <div class="tiers-header">
+    <div class="section-label">Choose Your Play</div>
+    <h2 class="section-title">Three Ways to <em>Win Your Market</em></h2>
+  </div>
   <div class="tiers-grid">
 
-    <!-- Tier 1 -->
-    <div class="tier-card tier-1">
-      <div class="tier-header">
-        <div class="tier-color"></div>
+    <div class="tier tier-1">
+      <div class="tier-top"></div>
+      <div class="tier-head">
         <div class="tier-name">Market Entry</div>
-        <div class="tier-price">$1,500<span>/mo</span></div>
+        <div class="tier-price">$1,500<sub>/mo</sub></div>
       </div>
       <div class="tier-body">
         <ul class="tier-features">
-          <li>Ranked local website built for your trade + city</li>
-          <li>Facebook business page setup and management</li>
-          <li>Exclusive inbound leads — 15+ calls/month</li>
-          <li>Meta ads managed in your target city</li>
-          <li>Monthly lead report</li>
-          <li>One territory. One partner. No sharing.</li>
+          <li><span class="tick">✓</span> Ranked local website for your trade + city</li>
+          <li><span class="tick">✓</span> Facebook business page setup + management</li>
+          <li><span class="tick">✓</span> Exclusive inbound leads — 15+ calls/month</li>
+          <li><span class="tick">✓</span> Meta ads managed in your city</li>
+          <li><span class="tick">✓</span> Monthly lead report</li>
+          <li><span class="tick">✓</span> One territory. One partner. No sharing.</li>
         </ul>
-        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Get Started</a>
+        <a href="#contact" class="btn-gold" style="display:block; text-align:center;">Get Started</a>
       </div>
     </div>
 
-    <!-- Tier 2 -->
-    <div class="tier-card tier-2 featured">
-      <div class="tier-badge">Most Popular</div>
-      <div class="tier-header">
-        <div class="tier-color"></div>
+    <div class="tier tier-2 featured">
+      <div class="tier-ribbon">Most Popular</div>
+      <div class="tier-top"></div>
+      <div class="tier-head">
         <div class="tier-name">Market Control</div>
-        <div class="tier-price">$2,000<span>/mo</span></div>
+        <div class="tier-price">$2,000<sub>/mo</sub></div>
       </div>
       <div class="tier-body">
         <ul class="tier-features">
-          <li>Everything in Market Entry</li>
-          <li>Business automation setup (CRM, follow-up sequences)</li>
-          <li>Automated lead nurturing — no lead slips through</li>
-          <li>Text + email follow-up for every inbound lead</li>
-          <li>Booking system integration</li>
-          <li>Weekly performance check-in</li>
+          <li><span class="tick">✓</span> Everything in Market Entry</li>
+          <li><span class="tick">✓</span> CRM + business automation setup</li>
+          <li><span class="tick">✓</span> Automated lead follow-up sequences</li>
+          <li><span class="tick">✓</span> Text + email nurturing for every lead</li>
+          <li><span class="tick">✓</span> Online booking system integration</li>
+          <li><span class="tick">✓</span> Weekly performance check-in</li>
         </ul>
-        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Get Started</a>
+        <a href="#contact" class="btn-gold" style="display:block; text-align:center;">Get Started</a>
       </div>
     </div>
 
-    <!-- Tier 3 -->
-    <div class="tier-card tier-3">
-      <div class="tier-header">
-        <div class="tier-color"></div>
+    <div class="tier tier-3">
+      <div class="tier-top"></div>
+      <div class="tier-head">
         <div class="tier-name">Total Monopoly</div>
-        <div class="tier-price">$3,000<span>/mo</span></div>
+        <div class="tier-price">$3,000<sub>/mo</sub></div>
       </div>
       <div class="tier-body">
         <ul class="tier-features">
-          <li>Everything in Market Control</li>
-          <li>Full marketing management (Google + Meta)</li>
-          <li>Custom branded website built for your company</li>
-          <li>Social media content creation</li>
-          <li>Reputation management and Google review strategy</li>
-          <li>Monthly strategy call with Ryan</li>
+          <li><span class="tick">✓</span> Everything in Market Control</li>
+          <li><span class="tick">✓</span> Full Google + Meta ad management</li>
+          <li><span class="tick">✓</span> Custom branded website for your company</li>
+          <li><span class="tick">✓</span> Social media content creation</li>
+          <li><span class="tick">✓</span> Google review + reputation management</li>
+          <li><span class="tick">✓</span> Monthly strategy call with Ryan</li>
         </ul>
-        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Get Started</a>
+        <a href="#contact" class="btn-gold" style="display:block; text-align:center;">Get Started</a>
       </div>
     </div>
 
   </div>
 </section>
-
-<div class="divider"></div>
-
-<!-- EXAMPLE SITES -->
-<section>
-  <div class="section-label">Proof</div>
-  <h2 class="section-title">Sites We've Built That Rank #1</h2>
-  <p class="section-sub">These are live sites we own and operate. They rank organically and generate inbound calls every day.</p>
-  <div class="examples-grid">
-    <div class="example-card">
-      <div class="example-icon">🏗️</div>
-      <h3>Bentonville Concrete</h3>
-      <p>Ranks #1 for concrete services in Bentonville, AR. Generates consistent inbound calls for our exclusive partner.</p>
-      <span class="example-rank">#1 Organic — Bentonville, AR</span>
-    </div>
-    <div class="example-card">
-      <div class="example-icon">🌵</div>
-      <h3>Farmington Fencing</h3>
-      <p>Built and ranked for the Farmington, NM market. Partner was booking jobs within the first week of partnership.</p>
-      <span class="example-rank">#1 Organic — Farmington, NM</span>
-    </div>
-    <div class="example-card">
-      <div class="example-icon">🏊</div>
-      <h3>Your City. Your Trade.</h3>
-      <p>We build in every major market. If your city isn't claimed yet, you have a window to lock in your territory now.</p>
-      <span class="example-rank">Available — Claim Your City</span>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
 
 <!-- TRADES -->
-<section id="trades">
-  <div class="section-label">Who We Serve</div>
-  <h2 class="section-title">Built for Blue Collar Businesses</h2>
-  <p class="section-sub">If you work with your hands and depend on local customers, we can build you a lead machine.</p>
-  <div class="trades-grid">
-    <span class="trade-tag">Fencing</span>
-    <span class="trade-tag">Concrete</span>
-    <span class="trade-tag">Pool Cleaning</span>
-    <span class="trade-tag">Artificial Turf</span>
-    <span class="trade-tag">Landscaping</span>
-    <span class="trade-tag">Roofing</span>
-    <span class="trade-tag">Painting</span>
-    <span class="trade-tag">Pressure Washing</span>
-    <span class="trade-tag">Gutter Cleaning</span>
-    <span class="trade-tag">Deck Building</span>
-    <span class="trade-tag">HVAC</span>
-    <span class="trade-tag">Plumbing</span>
-    <span class="trade-tag">Electrical</span>
-    <span class="trade-tag">Tree Service</span>
-    <span class="trade-tag">Junk Removal</span>
-    <span class="trade-tag">Window Cleaning</span>
+<section class="trades" id="trades">
+  <div class="trades-header">
+    <div class="section-label">Who We Serve</div>
+    <h2 class="section-title">Built for <em>Blue Collar Businesses</em></h2>
+    <p style="color:var(--muted); margin-top:0.8rem; font-size:0.98rem;">If you work with your hands and depend on local customers, we can build you a lead machine.</p>
+  </div>
+  <div class="trades-wrap">
+    <span class="trade-chip">Fencing</span>
+    <span class="trade-chip">Concrete</span>
+    <span class="trade-chip">Pool Cleaning</span>
+    <span class="trade-chip">Artificial Turf</span>
+    <span class="trade-chip">Landscaping</span>
+    <span class="trade-chip">Roofing</span>
+    <span class="trade-chip">Painting</span>
+    <span class="trade-chip">Pressure Washing</span>
+    <span class="trade-chip">Gutter Cleaning</span>
+    <span class="trade-chip">Deck Building</span>
+    <span class="trade-chip">HVAC</span>
+    <span class="trade-chip">Plumbing</span>
+    <span class="trade-chip">Electrical</span>
+    <span class="trade-chip">Tree Service</span>
+    <span class="trade-chip">Junk Removal</span>
+    <span class="trade-chip">Window Cleaning</span>
   </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- CTA -->
-<div class="cta-section" id="contact">
-  <div class="section-label">Ready to Win?</div>
-  <h2>Claim Your City Before<br>Your Competition Does.</h2>
-  <p>We only take one partner per city per trade. Once it's claimed, it's gone. Book a free call and we'll show you if your market is still available.</p>
-  <a href="https://calendly.com" class="btn-primary" style="font-size:1.1rem; padding:1rem 2.8rem;">
-    Book Your Free Strategy Call
-  </a>
-  <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--muted);">No pitch. No pressure. We'll show you your market's lead potential in 15 minutes.</p>
-</div>
+<section class="cta" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-content">
+    <div class="section-label">Ready to Win?</div>
+    <h2>Claim Your City Before<br><em>Your Competition Does.</em></h2>
+    <p>We only take one partner per city per trade. Once it's claimed, it's gone. Book a free call — we'll show you if your market is still available.</p>
+    <a href="https://calendly.com" class="btn-gold" style="font-size:1.05rem; padding:1rem 2.8rem;">
+      Book Your Free Strategy Call
+    </a>
+    <p class="cta-note">No pitch. No pressure. 15 minutes to see your market's lead potential.</p>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Digital Monopoly</div>
-  <p>Own Your Market. Dominate Your City.</p>
-  <p style="margin-top:0.5rem;">digitalmonopolyinfo.com</p>
+  <div class="footer-logo">
+    Digital Monopoly
+    <span>digitalmonopolyinfo.com</span>
+  </div>
+  <p>© 2026 Digital Monopoly. All rights reserved.</p>
 </footer>
 
 </body>
