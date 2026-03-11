@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Monopoly — Own Your Market. Dominate Your City.</title>
+  <meta name="description" content="Digital Monopoly builds ranked websites and Facebook pages for blue collar trades. You get exclusive inbound leads. We own the asset. You own your market." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #1a7a4a;
+      --green2: #23a062;
+      --gold:   #e8b84b;
+      --red:    #c0392b;
+      --navy:   #0d1117;
+      --card:   #131920;
+      --border: #1e2d1f;
+      --text:   #e8ede9;
+      --muted:  #8a9e8c;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVBAR ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(13,17,23,0.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span { color: var(--green2); }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--green) !important;
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: var(--green2) !important; }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(26,122,74,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 80%, rgba(232,184,75,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .board-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(26,122,74,0.2);
+      border: 1px solid var(--green);
+      color: var(--green2);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 100px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+    }
+
+    .hero h1 .highlight {
+      color: var(--gold);
+      position: relative;
+    }
+
+    .hero h1 .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 0; right: 0;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 2px;
+      opacity: 0.4;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--green2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,122,74,0.35);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold);
+      padding: 0.9rem 2.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(232,184,75,0.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--gold);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ─── SECTION BASE ───────────────────────────────────── */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green2);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ─── HOW IT WORKS ───────────────────────────────────── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--green);
+    }
+
+    .step-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      color: var(--gold);
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ─── TIERS ──────────────────────────────────────────── */
+    #tiers { background: rgba(19,25,32,0.6); border-radius: 20px; }
+
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .tier-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .tier-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    }
+
+    .tier-card.featured {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 1px var(--gold), 0 8px 32px rgba(232,184,75,0.15);
+    }
+
+    .tier-badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    .tier-header {
+      padding: 1.8rem 1.8rem 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tier-color {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      margin-bottom: 1.2rem;
+    }
+
+    .tier-1 .tier-color { background: #8B5CF6; }
+    .tier-2 .tier-color { background: #F97316; }
+    .tier-3 .tier-color { background: #3B82F6; }
+
+    .tier-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 0.3rem;
+    }
+
+    .tier-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .tier-price span {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .tier-body {
+      padding: 1.5rem 1.8rem 1.8rem;
+    }
+
+    .tier-features {
+      list-style: none;
+      margin-bottom: 1.8rem;
+    }
+
+    .tier-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+      color: var(--text);
+      margin-bottom: 0.7rem;
+      line-height: 1.4;
+    }
+
+    .tier-features li::before {
+      content: '✓';
+      color: var(--green2);
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ─── TRADES ─────────────────────────────────────────── */
+    .trades-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .trade-tag {
+      background: rgba(26,122,74,0.12);
+      border: 1px solid rgba(26,122,74,0.3);
+      color: var(--green2);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ─── EXAMPLE SITES ──────────────────────────────────── */
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .example-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+
+    .example-card:hover {
+      border-color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .example-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(26,122,74,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .example-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .example-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .example-rank {
+      display: inline-block;
+      background: rgba(232,184,75,0.15);
+      border: 1px solid rgba(232,184,75,0.3);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-top: 0.8rem;
+    }
+
+    /* ─── OWNERSHIP BOX ──────────────────────────────────── */
+    .ownership-box {
+      background: linear-gradient(135deg, rgba(26,122,74,0.15), rgba(13,17,23,0.8));
+      border: 1px solid var(--green);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .ownership-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+
+    .ownership-box p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .ownership-points {
+      list-style: none;
+    }
+
+    .ownership-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .ownership-points li .dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* ─── CTA ────────────────────────────────────────────── */
+    .cta-section {
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(26,122,74,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ─── DIVIDER ────────────────────────────────────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav a:not(.nav-cta) { display: none; }
+      .ownership-box { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-content > * {
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+    .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+
+    /* Monopoly token decoration */
+    .token {
+      display: inline-block;
+      font-size: 2rem;
+      margin: 0 0.3rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .token:nth-child(2) { animation-delay: 0.2s; }
+    .token:nth-child(3) { animation-delay: 0.4s; }
+    .token:nth-child(4) { animation-delay: 0.6s; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Digital<span>Monopoly</span></div>
+  <div>
+    <a href="#how-it-works">How It Works</a>
+    <a href="#tiers">Pricing</a>
+    <a href="#trades">Trades</a>
+    <a href="#contact" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="board-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Exclusive Lead Generation for Blue Collar Trades</div>
+    <h1>Own Your Market.<br><span class="highlight">Dominate Your City.</span></h1>
+    <p class="hero-sub">
+      We build ranked websites and Facebook pages that generate inbound leads 24/7.
+      You get every lead exclusively. No shared leads. No competition. One partner per city.
+    </p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn-primary">Get Free Leads First</a>
+      <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-number">15+</span>
+        <span class="stat-label">Inbound Calls/Month</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Exclusive Per City</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">#1</span>
+        <span class="stat-label">Organic Ranking</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">0</span>
+        <span class="stat-label">Shared Leads</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-label">The Playbook</div>
+  <h2 class="section-title">How Digital Monopoly Works</h2>
+  <p class="section-sub">We do the work. You take the calls. Simple as that.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-number">01</div>
+      <h3>We Build the Asset</h3>
+      <p>We build a ranked website and Facebook page for your trade in your city. We own it. It generates leads around the clock.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">02</div>
+      <h3>We Prove It Works</h3>
+      <p>Before you pay a dime, we send you real homeowner leads for free. You work the leads. See the quality yourself.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">03</div>
+      <h3>You Own Your City</h3>
+      <p>One partner per city. Every lead from that market goes to you exclusively. No other company in your trade gets our leads in your territory.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">04</div>
+      <h3>We Keep Scaling</h3>
+      <p>As your market grows, so does our system. More content, more ads, more leads. Your pipeline never runs dry.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- OWNERSHIP -->
+<section>
+  <div class="section-label">The Difference</div>
+  <h2 class="section-title">We Build It. You Benefit. Forever.</h2>
+  <div class="ownership-box">
+    <div>
+      <h3>Why We Keep the Asset</h3>
+      <p>Most agencies build you a website and walk away. If you stop paying, you lose everything and start from scratch.<br><br>
+      Digital Monopoly works differently. We own the ranked site, which means we're invested in keeping it #1. The better it ranks, the more it's worth to us — and the more leads it sends to you.</p>
+    </div>
+    <ul class="ownership-points">
+      <li><span class="dot"></span>We maintain the site and rankings long-term</li>
+      <li><span class="dot"></span>You never pay to rebuild from scratch</li>
+      <li><span class="dot"></span>We only win when you get leads</li>
+      <li><span class="dot"></span>Exclusive territory — your competition can't buy in</li>
+      <li><span class="dot"></span>Proven before you spend a dollar</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TIERS -->
+<section id="tiers">
+  <div class="section-label">Choose Your Play</div>
+  <h2 class="section-title">Three Ways to Win Your Market</h2>
+  <p class="section-sub">Start with leads. Add automation. Go all in on total market domination.</p>
+  <div class="tiers-grid">
+
+    <!-- Tier 1 -->
+    <div class="tier-card tier-1">
+      <div class="tier-header">
+        <div class="tier-color"></div>
+        <div class="tier-name">Market Entry</div>
+        <div class="tier-price">$1,500<span>/mo</span></div>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-features">
+          <li>Ranked local website built for your trade + city</li>
+          <li>Facebook business page setup and management</li>
+          <li>Exclusive inbound leads — 15+ calls/month</li>
+          <li>Meta ads managed in your target city</li>
+          <li>Monthly lead report</li>
+          <li>One territory. One partner. No sharing.</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Tier 2 -->
+    <div class="tier-card tier-2 featured">
+      <div class="tier-badge">Most Popular</div>
+      <div class="tier-header">
+        <div class="tier-color"></div>
+        <div class="tier-name">Market Control</div>
+        <div class="tier-price">$2,000<span>/mo</span></div>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-features">
+          <li>Everything in Market Entry</li>
+          <li>Business automation setup (CRM, follow-up sequences)</li>
+          <li>Automated lead nurturing — no lead slips through</li>
+          <li>Text + email follow-up for every inbound lead</li>
+          <li>Booking system integration</li>
+          <li>Weekly performance check-in</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Tier 3 -->
+    <div class="tier-card tier-3">
+      <div class="tier-header">
+        <div class="tier-color"></div>
+        <div class="tier-name">Total Monopoly</div>
+        <div class="tier-price">$3,000<span>/mo</span></div>
+      </div>
+      <div class="tier-body">
+        <ul class="tier-features">
+          <li>Everything in Market Control</li>
+          <li>Full marketing management (Google + Meta)</li>
+          <li>Custom branded website built for your company</li>
+          <li>Social media content creation</li>
+          <li>Reputation management and Google review strategy</li>
+          <li>Monthly strategy call with Ryan</li>
+        </ul>
+        <a href="#contact" class="btn-primary" style="width:100%; text-align:center; display:block;">Get Started</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXAMPLE SITES -->
+<section>
+  <div class="section-label">Proof</div>
+  <h2 class="section-title">Sites We've Built That Rank #1</h2>
+  <p class="section-sub">These are live sites we own and operate. They rank organically and generate inbound calls every day.</p>
+  <div class="examples-grid">
+    <div class="example-card">
+      <div class="example-icon">🏗️</div>
+      <h3>Bentonville Concrete</h3>
+      <p>Ranks #1 for concrete services in Bentonville, AR. Generates consistent inbound calls for our exclusive partner.</p>
+      <span class="example-rank">#1 Organic — Bentonville, AR</span>
+    </div>
+    <div class="example-card">
+      <div class="example-icon">🌵</div>
+      <h3>Farmington Fencing</h3>
+      <p>Built and ranked for the Farmington, NM market. Partner was booking jobs within the first week of partnership.</p>
+      <span class="example-rank">#1 Organic — Farmington, NM</span>
+    </div>
+    <div class="example-card">
+      <div class="example-icon">🏊</div>
+      <h3>Your City. Your Trade.</h3>
+      <p>We build in every major market. If your city isn't claimed yet, you have a window to lock in your territory now.</p>
+      <span class="example-rank">Available — Claim Your City</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TRADES -->
+<section id="trades">
+  <div class="section-label">Who We Serve</div>
+  <h2 class="section-title">Built for Blue Collar Businesses</h2>
+  <p class="section-sub">If you work with your hands and depend on local customers, we can build you a lead machine.</p>
+  <div class="trades-grid">
+    <span class="trade-tag">Fencing</span>
+    <span class="trade-tag">Concrete</span>
+    <span class="trade-tag">Pool Cleaning</span>
+    <span class="trade-tag">Artificial Turf</span>
+    <span class="trade-tag">Landscaping</span>
+    <span class="trade-tag">Roofing</span>
+    <span class="trade-tag">Painting</span>
+    <span class="trade-tag">Pressure Washing</span>
+    <span class="trade-tag">Gutter Cleaning</span>
+    <span class="trade-tag">Deck Building</span>
+    <span class="trade-tag">HVAC</span>
+    <span class="trade-tag">Plumbing</span>
+    <span class="trade-tag">Electrical</span>
+    <span class="trade-tag">Tree Service</span>
+    <span class="trade-tag">Junk Removal</span>
+    <span class="trade-tag">Window Cleaning</span>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA -->
+<div class="cta-section" id="contact">
+  <div class="section-label">Ready to Win?</div>
+  <h2>Claim Your City Before<br>Your Competition Does.</h2>
+  <p>We only take one partner per city per trade. Once it's claimed, it's gone. Book a free call and we'll show you if your market is still available.</p>
+  <a href="https://calendly.com" class="btn-primary" style="font-size:1.1rem; padding:1rem 2.8rem;">
+    Book Your Free Strategy Call
+  </a>
+  <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--muted);">No pitch. No pressure. We'll show you your market's lead potential in 15 minutes.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Digital Monopoly</div>
+  <p>Own Your Market. Dominate Your City.</p>
+  <p style="margin-top:0.5rem;">digitalmonopolyinfo.com</p>
+</footer>
+
+</body>
+</html>
